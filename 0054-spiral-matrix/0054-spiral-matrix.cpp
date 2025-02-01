@@ -24,11 +24,13 @@ public:
                 bottom--;
             }
             if(left<=right){
-                for(int i=right;i>=left;i--){
-                    ans.push_back(matrix[bottom][i]);
+                for(int i=bottom;i>=top;i--){
+                    ans.push_back(matrix[i][left]);
                 }
+            left++;
             }
         }
         return ans;
+
     }
 };
