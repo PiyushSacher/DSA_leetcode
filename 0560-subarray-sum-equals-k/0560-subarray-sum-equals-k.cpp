@@ -3,7 +3,7 @@ public:
     int subarraySum(vector<int>& nums, int k) {
         int count=0;
         int n=nums.size();
-        vector<int> prefixSum(n);
+        vector<int> prefixSum(n,0);
         prefixSum[0]=nums[0];
         for(int i=1;i<n;i++){
             prefixSum[i]=prefixSum[i-1]+nums[i];
@@ -17,7 +17,7 @@ public:
             if(m.find(val)!=m.end()){
                 count=count+m[val];
             }
-            if(m.find(val)==m.end()){
+            if(m.find(prefixSum[j])==m.end()){
                 m[prefixSum[j]]=0;
             }
             m[prefixSum[j]]++;
