@@ -33,7 +33,11 @@ public:
         return ans;    
     }
     vector<int> searchRange(vector<int>& nums, int target) {
-        result.push_back(firstOcc(nums,target));
+        int first=firstOcc(nums,target);
+        result.push_back(first);
+        //as if there is not firstOccurence how can there be a lastOcuurence
+        if(first==-1) return {-1,-1};
+        
         result.push_back(LastOcc(nums,target));   
 
         return result;   
