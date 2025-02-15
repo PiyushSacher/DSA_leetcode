@@ -11,7 +11,7 @@ public:
             if(nums[low]==nums[mid] && nums[mid]==nums[high]){
                 low=low+1;
                 high=high-1;
-                continue;
+                continue;                
             }
 
             //left-sorted
