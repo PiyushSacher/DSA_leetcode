@@ -16,7 +16,7 @@ public:
 
             //left-sorted
             if(nums[low]<=nums[mid]){
-                if(nums[low]<=target && target<=nums[high]) high=mid-1;
+                if(nums[low]<=target && target<=nums[mid]) high=mid-1;
                 else low=mid+1;
             }
 
