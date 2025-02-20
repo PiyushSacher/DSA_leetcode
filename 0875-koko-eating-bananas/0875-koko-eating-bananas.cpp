@@ -8,7 +8,7 @@ public:
         return maxi;
     }
 
-    int func(vector<int>&piles,int mid){
+    long long func(vector<int>&piles,int mid){
         long long total=0;
         for(int i=0;i<piles.size();i++){
             total+=(piles[i]+mid-1)/mid;            
@@ -17,7 +17,6 @@ public:
     }
 
     int minEatingSpeed(vector<int>& piles, int h) {
-        
         long long low=1;
         long long high=maxEle(piles);
         long long ans=high;
@@ -31,6 +30,6 @@ public:
             }
             else low=mid+1;
         }   
-        return ans;  
+        return (int)ans;  
     }
 };
