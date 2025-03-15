@@ -1,32 +1,35 @@
-class ListNode {
+class Node {
     public:
       string val;
-      ListNode *next;
-      ListNode *prev;
-      ListNode() : val(0), next(nullptr),prev(nullptr){};
-      ListNode(string x) : val(x), next(nullptr) prev(nullptr){};
-      ListNode(string x, ListNode *next, ListNode *random) : val(x), next(next) prev(random){};
+      Node *next;
+      Node *prev;
+      Node(): val(""), next(nullptr),prev(nullptr){}
+      Node(string x) : val(x), next(nullptr), prev(nullptr){}
+      Node(string x, Node *next, Node *random) : val(x), next(next), prev(random){}
 };
  
 
 
 class BrowserHistory {
 public:
-    ListNode* currentPage;
+    Node* currentPage;
     BrowserHistory(string homepage) {
-        currentPage=new ListNode(homepage);                
+        currentPage=new Node(homepage);                
     }
     
     void visit(string url) {
-        ListNode* newNode=new ListNode(url);
-        current->next=newNode;
-        current=current->next;        
+        Node* newNode=new Node(url);
+        currentPage->next=newNode;
+        newNode->prev=currentPage;
+        currentPage=currentPage->next;        
     }
     
     string back(int steps) {
         while(steps){
-            if(currentPage->prev!=NULL) current=current->prev;
-            else break;
+            if(currentPage->prev!=NULL) currentPage=currentPage->prev;
+            else {
+                break;
+            }
             steps--;
 
         }
@@ -35,8 +38,10 @@ public:
     
     string forward(int steps) {
         while(steps){
-            if(currentPage->next!=NULL) current=current->next;
-            else break;
+            if(currentPage->next!=NULL) currentPage=currentPage->next;
+            else {
+                break;
+            }
             steps--;
 
         }
