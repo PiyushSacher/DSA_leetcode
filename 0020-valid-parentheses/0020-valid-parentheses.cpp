@@ -1,39 +1,29 @@
 class Solution {
 public:
     bool isValid(string s) {
-            stack<char> st;
-    for(int i=0;i<s.size();i++){
-        //opening bracket , therefore push in the stack
-        if(s[i]=='{' || s[i]=='[' || s[i]=='('){
-            st.push(s[i]);
-        }
-        else{
-            //closing bracket, therefore check if the closing bracket == stacks top counter opening bracket and also check if stack is not empty 
-            if(s[i]==')' && !st.empty() && st.top()=='('){
-                st.pop();
-            }
-            else if(s[i]==']' && !st.empty() && st.top()=='['){
-                st.pop();
-            }
-            else if(s[i]=='}' && !st.empty() && st.top()=='{'){
-                st.pop();
-            }
+        stack<int>st;
+        for(int i=0;i<s.size();i++){
+            char ch=s[i];
+            //if opening bracket
+            if(s[i]=='(' || s[i]=='{' || s[i]=='[') st.push(s[i]);
+            
+            //else it is a closing bracket or st is empty
             else{
-            //stack will be empty or we are getting bracket of these type (( } whose closing bracket is not matching stacks top counter opening bracket
-                
-                return false;
+                //eg:   ))
+                if(st.empty()) return false; 
+
+                if(s[i]==')' && st.top()=='(') st.pop();
+                else if(s[i]=='}' && st.top()=='{') st.pop();
+                else if(s[i]==']' && st.top()=='[') st.pop();
+
+                else{
+                    // any unbalanced order
+                    // }]
+                    return false;
+                }
             }
         }
-    }
-    if(st.empty()){
-        return true;
-    }
-    else{
-        
-        return false;
-    }
-
-
+        return st.empty();
         
     }
 };
