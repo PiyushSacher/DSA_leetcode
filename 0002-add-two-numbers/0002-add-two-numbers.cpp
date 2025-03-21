@@ -40,7 +40,7 @@ public:
             if(temp2) temp2=temp2->next;
 
         } 
-        if(carry){
+        if(carry){ 
             ListNode* newNode=new ListNode(carry);
             curr->next=newNode;
             curr=curr->next;
