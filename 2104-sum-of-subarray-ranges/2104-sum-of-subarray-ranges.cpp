@@ -34,7 +34,8 @@ public:
         for (int i=0;i<n;i++) {
             long long left=i-pse[i];
             long long right=nse[i]-i;
-            total+=(right*left)*(long long)arr[i];  
+            total+=(right*left)*(long long)arr[i]; 
+        } 
         return total;
     }
 
