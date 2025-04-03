@@ -5,7 +5,7 @@ public:
         for(int i=0;i<asteroids.size();i++){
             if(asteroids[i]>0) st.push(asteroids[i]);
             else{
-                while(!st.empty() && abs(asteroids[i])>st.top() && st.top()>0) st.pop();
+                while(!st.empty() && abs(asteroids[i])>=st.top() && st.top()>0) st.pop();
                 if(st.empty() || st.top()<0) st.push(asteroids[i]);
                 else if(!st.empty() && abs(asteroids[i])==st.top()) st.pop();
             }
