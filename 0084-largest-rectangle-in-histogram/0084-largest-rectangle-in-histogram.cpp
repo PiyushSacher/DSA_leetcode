@@ -1,6 +1,6 @@
 class Solution {
 public:
-        vector<int> findNSE(vector<int> &arr) {
+    vector<int> findNSE(vector<int> &arr) {
         int n=arr.size();
         vector<int>nse(n);
         stack<int>st;
