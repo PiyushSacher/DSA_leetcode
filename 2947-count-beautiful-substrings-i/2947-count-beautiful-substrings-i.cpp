@@ -17,7 +17,6 @@ public:
                 if(vowel==conso && ((vowel*conso)%k)==0) result+=1;
             }
         }
-        return result;
-        
+        return result;   
     }
 };
