@@ -10,18 +10,18 @@
  * };
  */
 class Solution {
-    vector<int>ans;
-    vector<int> f(TreeNode* root,int level){
-        if(root==NULL) return ans;
+    public:
+    //pass by reference is important it indicates that the same ans is being passed to next recursive call
+    void f(TreeNode* root,int level,vector<int> &ans){
+        if(root==NULL) return;
         if(level==ans.size()) ans.push_back(root->val);
-        f(root->right,level+1);
-        f(root->left,level+1);
-
-        return ans;
+        f(root->right,level+1,ans);
+        f(root->left,level+1,ans);
     }
-public:
+
     vector<int> rightSideView(TreeNode* root) {
-        vector<int>res=f(root,0);
-        return res;     
+        vector<int> ans;
+        f(root,0,ans);
+        return ans;     
     }
 };
