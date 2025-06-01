@@ -8,7 +8,7 @@ public:
         int pick=nums[idx]+f(nums,idx-2,dp);
         int notPick=0+f(nums,idx-1,dp);
         
-        return max(pick,notPick);
+        return dp[idx]=max(pick,notPick);
     }
     int rob(vector<int>& nums) {
         int n=nums.size();
