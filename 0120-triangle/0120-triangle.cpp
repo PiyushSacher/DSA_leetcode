@@ -1,24 +1,19 @@
 class Solution {
 public:
-    vector<vector<int>> grid;
-    vector<vector<int>> dp;
+    int f(int i,int j,int n,vector<vector<int>>&triangle,vector<vector<int>>&dp){
+        if(i==n-1) return triangle[i][j];
+        if(dp[i][j]!=-1) return dp[i][j];
+        int down=f(i+1,j,n,triangle,dp);
+        int right=f(i+1,j+1,n,triangle,dp);
 
-    int f(int r,int c){
-        if(r==grid.size()-1) return grid[r][c];
-
-        if(dp[r][c]!=-1){
-            return dp[r][c];
-        }
-        return dp[r][c]=grid[r][c]+min(f(r+1,c),f(r+1,c+1));
+        return dp[i][j]=triangle[i][j]+min(down,right);
 
     }
-
-
     int minimumTotal(vector<vector<int>>& triangle) {
-        grid=triangle;
-        dp.clear();
-        dp.resize(205,vector<int> (205,-1));
-        return f(0,0);
+        int n=triangle.size();
+        vector<vector<int>>dp(n,vector<int>(n,-1));
+
+        return f(0,0,n,triangle,dp);
         
     }
 };
