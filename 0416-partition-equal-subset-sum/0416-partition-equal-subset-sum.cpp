@@ -1,23 +1,26 @@
 class Solution {
 public:
-vector<vector<int>>dp ;
-    bool f(vector<int> &arr,int idx,int k){
-        if(k==0) return true;
-        if(idx==arr.size()) return false;
-        if(dp[idx][k]!=-1) return dp[idx][k];
-        if(arr[idx]<=k){//can include
-            return dp[idx][k]=f(arr,idx+1,k-arr[idx]) || f(arr,idx+1,k);
+    bool f(int i,int target,vector<int>&nums,vector<vector<int>>&dp){
+        if(target==0) return true;
+        if(i==0) return (nums[0]==target);
+
+        if(dp[i][target]!=-1) return dp[i][target];
+
+        bool notPick=f(i-1,target,nums,dp);
+        bool pick=false;
+        if(target>=nums[i]){
+            pick=f(i-1,target-nums[i],nums,dp);
         }
-        //exclude
-        return dp[idx][k]=f(arr,idx+1,k);
+        return dp[i][target]=pick || notPick;
     }
     bool canPartition(vector<int>& nums) {
         int sum=0;
-        for(int i=0;i<=nums.size()-1;i++) sum=sum+nums[i];
+        for(int i=0;i<nums.size();i++) sum+=nums[i];
         if(sum%2!=0) return false;
-        dp.clear();
-        dp.resize(200,vector<int>(20005,-1));
-        return f(nums,0,sum/2);
-        
+        else {
+            int n=nums.size();
+            vector<vector<int>>dp(n+1,vector<int>(20001,-1));
+            return f(nums.size()-1,sum/2,nums,dp);
+        }        
     }
 };
