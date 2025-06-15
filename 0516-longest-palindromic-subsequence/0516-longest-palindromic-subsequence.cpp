@@ -12,7 +12,7 @@ public:
         
         string s2;
         int j=0;
-        for(int i=n-1;i>=0;i--) s2[j++]=s[i];
+        for(int i=n-1;i>=0;i--) s2.push_back(s[i]);
 
         vector<vector<int>>dp(n,vector<int>(n,-1));
         return f(n-1,n-1,s,s2,dp);   
