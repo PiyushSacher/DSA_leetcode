@@ -4,7 +4,7 @@ public:
         if(i<0 && j<0) return true;
         if(j<0 && i>=0) return false;
         if(i<0 && j>=0){
-            for(int z=0;z<=i;z++){
+            for(int z=0;z<=j;z++){
                 if(p[z]!='*') return false;
             }
             return true;
