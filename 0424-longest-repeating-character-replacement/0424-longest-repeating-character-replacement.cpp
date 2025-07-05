@@ -8,7 +8,7 @@ public:
             maxf=max(maxf,hash[s[r]-'A']);
             while((r-l+1)-maxf>k){
                 hash[s[l]-'A']--;
-                maxf=0;
+               // maxf=0;
                 l++;
             }
             
