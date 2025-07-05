@@ -10,7 +10,7 @@ public:
         while(r<nums.size()){
             sum+=(nums[r]%2);
             while(sum>goal){
-                sum-=nums[l]%2;
+                sum-=nums[l];
                 l++;
             }
             
